@@ -1,13 +1,14 @@
 import { Sequelize } from 'sequelize'
+import dotenv from "dotenv"
 import cors from "cors"
 import express from "express"
 import BoBooksRoutes from './backend/routes/borrowed_books.routes.js'
 import BookRoutes from './backend/routes/books.routes.js'
 import StudentRoutes from './backend/routes/student.routes.js'
-import { appendFile } from 'fs';
+dotenv.config()
 
-const sequelize = new Sequelize('database_name', 'username', 'password', {
-  host: 'localhost',
+const sequelize = new Sequelize('library_utma', 'root', process.env.DB_PASS, {
+  host: process.env.DB_HOST,
   dialect: 'mysql'
 });
 
@@ -22,9 +23,9 @@ const sequelize = new Sequelize('database_name', 'username', 'password', {
 const index = express()
 index.use(cors())
 
-index.listen(4010,() =>{S
+index.listen(4010,() =>{
     console.log('el servidor escucha')
 })
-appendFile.use('/books', BookRoutes)
-appendFile.use('/borrowed_books', BoBooksRoutes)
-appendFile.use('/student', StudentRoutes)
+index.use('/books', BookRoutes)
+index.use('/borrowed_books', BoBooksRoutes)
+index.use('/student', StudentRoutes)

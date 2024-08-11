@@ -10,7 +10,7 @@ export const createstudent = async (req, res) => {
 };
 
 // Obtener todos los usuarios
-export const getstudents = async (req, res) => {
+export const getstudent = async (req, res) => {
     try {
         const users = await student.findAll();
         res.status(200).json(users);

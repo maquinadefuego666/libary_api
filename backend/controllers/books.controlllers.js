@@ -19,7 +19,7 @@ export const getbooks = async (req, res) => {
     }
 };
 
-export const getsbooksById = async (req, res) => {
+export const getbooksById = async (req, res) => {
     try {
         const user = await book.findByPk(req.params.id);
         if (user) {
